@@ -49,7 +49,8 @@ int main(void){
     while ((character = getchar()) != EOF && character != '\n') {
         printf("%c",character);
         
-    }  
+    }
+    afficher_carte();
     test[1]=character;   
     printf("%s",test);
 
