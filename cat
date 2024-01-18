@@ -4,7 +4,7 @@ void print_file(FILE *fichier){
   char c;
 while ( (c=getc(fichier)) != EOF) fputc(c,stdout);
 }
-  int main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) {
   int i;
   FILE * fichiers;
   char * nom_fichier;
