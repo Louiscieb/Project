@@ -23,6 +23,22 @@ void liberer_macron() {
     stdprof_free(map);
 }
 
+void GIGA_NIGGA_SWITCH(char  arg){
+    switch (arg)
+    {
+    case INVOCATION:
+        INVOCATION();
+        break;
+    
+    default:
+        break;
+    }
+
+
+
+
+}
+
 void afficher_carte(){
     int i,j;
     printf("  0 1 2 3 4 5 6 7 8 9 \n");/*a remplacer après par une boucle jusqu'a taille x*/
@@ -98,21 +114,6 @@ void GRIMPER(){}    /*Affiche la carte*/
 void RANGER(){}     /*Affiche l'inventaire*/
 void VISION(){
 
-}
-char lire_commande() {
-    int n = 0;
-    char c;
-    char u;
-    printf("entier> ");
-    while ( (u=(c = getchar())) != '\n' && c != EOF && u != '#') {
-        if ('0' <= c && c <= '9') {
-            n = n*10 + (c-'0');
-        } else {
-          while ( (c = getchar()) != '\n' && c != EOF);
-          return -1;
-        }
-    }
-    return n;
 }
 
 

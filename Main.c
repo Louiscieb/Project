@@ -2,11 +2,19 @@
 #include <stdlib.h>
 #include "stdprof.h"
 #include "eleve.h"
+#include "Lecture.c"
 
-int main(void){
-    char test[30];
+void print_file(FILE *fichier){
+    char c;
+    while ( (c=getc(fichier)) != EOF) fputc(c,stdout);
+    GIGA_NIGGA_SWITCH(c);
+}
+
+int main(int argc, char* argv[]){
+    int i_l;
+    FILE * fichiers;
+    char * nom_fichier;
     int i,j;
-    int character;
     char init_values[10][10] = {
         {'R', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', ' '},
         {' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
@@ -26,6 +34,23 @@ int main(void){
             map->memoire[i][j] = init_values[i][j];
         }
     }
+    
+
+    if (argc==1) { /* argv[0] : nom du programme */
+    print_file(stdin); /* stdin : entrée standard */
+   
+    }
+    else {
+    for (i_l=1; i_l<argc; i_l++) {
+    nom_fichier = argv[i_l];
+    if ((fichiers=fopen(nom_fichier,"r")) == NULL) {
+        fprintf(stderr,"Erreur lecture %s\n",nom_fichier);
+        exit(1);
+    }
+        print_file(fichiers);
+        fclose(fichiers);
+    }
+    }
     /*afficher_carte();
     BAS();
     BAS();
@@ -41,7 +66,7 @@ int main(void){
     stdprof_afficher();*/
     /*printf("%d",lire_commande());*/
     
-    printf("Entrez une chaîne de caractères (Ctrl+D pour terminer la saisie) :\n");
+ /*   printf("Entrez une chaîne de caractères (Ctrl+D pour terminer la saisie) :\n");
 
 
     printf("Vous avez saisi : ");
@@ -55,5 +80,8 @@ int main(void){
     printf("%s",test);
 
     printf("\n");
-    return 0;
-}   
+    
+
+    */
+   return 0;
+} 
