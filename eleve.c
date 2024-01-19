@@ -26,10 +26,12 @@ void liberer_macron() {
 void GIGA_NIGGA_SWITCH(char  arg){
     switch (arg)
     {
-    case INVOCATION:
+    case "INVOCATION":
         INVOCATION();
         break;
-    
+        case "E":
+        printf("PEKS");
+        break;
     default:
         break;
     }
