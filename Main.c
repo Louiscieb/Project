@@ -28,12 +28,12 @@ int main(int argc, char* argv[]){
         {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
         {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}
     };
+    map = nouvelle_carte(10, 10);
     for ( i = 0; i < map->tailley; i++) {
         for ( j = 0; j < map->taillex; j++) {
             map->memoire[i][j] = init_values[i][j];
         }
     }
-    
 
     if (argc==1) { /* argv[0] : nom du programme */
     print_file(stdin); /* stdin : entrée standard */

@@ -4,10 +4,9 @@
 #include "eleve.h"
 
 
-
-struct coordones coord={0,0};
-struct stats rahan = {80,80,10,1};
-struct carte*map= nouvelle_carte(10, 10);
+struct coordonee_rahan coord={0,0};
+struct rahan_stats rahan = {80,80,10,3};
+struct carto *map;
 
 void liberer_macron() {
     int i;
@@ -23,12 +22,12 @@ void VISION(){
     int i,j;
     printf("  0 1 2 3 4 5 6 7 8 9 \n");/*a remplacer après par une boucle jusqu'a taille x*/
     printf(" +-+-+-+-+-+-+-+-+-+-+\n");
-    for(i=0; i<map-> tailley;i++){
+    for(i=0; i<map->tailley;i++){
         printf("%d",i);
         printf("|");  
-        for(j=0; j<map-> taillex; j++){
-            printf("%c",map-> memoire[i][j]);
-            if (j+1 != map-> taillex) {
+        for(j=0; j<map->taillex; j++){
+            printf("%c",map->memoire[i][j]);
+            if (j+1 != map->taillex) {
                 printf(" ");
             } 
     }			
@@ -45,8 +44,8 @@ void INVOCATION(){
 
 void HAUT() {
     int i=0;
-    while(i<=rahan.vitesse) {
-        if (map->memoire[coord.x][coord.y - i] == '#') {
+    while(i<rahan.vitesse) {
+        if (map->memoire[coord.x][coord.y - 1] == '#') {
             printf("Rahan : \" Aïe ! >:(\"\n");
             break;
         }
@@ -59,8 +58,8 @@ void HAUT() {
 
 void BAS() {
     int i=0;
-    while(i<=rahan.vitesse){
-        if (map->memoire[coord.x][coord.y + i] == '#') {
+    while(i<rahan.vitesse){
+        if (map->memoire[coord.x][coord.y + 1] == '#') {
             printf("Rahan : \" Aïe ! >:(\"\n");
             break;
         } 
@@ -73,7 +72,7 @@ void BAS() {
 
 void GAUCHE() {
     int i=0;    
-    while(i<=rahan.vitesse){
+    while(i<rahan.vitesse){
         if (map->memoire[coord.x-1][coord.y] == '#') {
             printf("Rahan : \" Aïe ! >:(\"\n");
             break;
@@ -87,13 +86,13 @@ void GAUCHE() {
 
 void DROITE() {
     int i=0;
-    while(i<=rahan.vitesse){
+    while(i<rahan.vitesse){
         if (map->memoire[coord.x+1][coord.y] == '#') {
             printf("Rahan : \" Aïe ! >:(\"\n");
             break;
         } 
         map->memoire[coord.y][coord.x] = ' ';
-        map->memoire[coord.y + 1][coord.x+1] = 'R';
+        map->memoire[coord.y][coord.x+1] = 'R';
         coord.x = coord.x + 1;
         i++;
     }
@@ -130,7 +129,35 @@ void GIGA_NIGGA_SWITCH(char  arg){
 
 
 }
+carte* nouvelle_carte(int x,int y){
+    int i;
+    carte *carton=stdprof_malloc(sizeof(carte));
+    carton->taillex=x;
+    carton->tailley=y;
+    carton->memoire = stdprof_malloc(y * sizeof(char *));
+    for ( i = 0; i < y; i++) {
+        carton->memoire[i] = stdprof_malloc(x * sizeof(char));
+    }
+    carton->x=0;
+    carton->y=0;
+    return carton;
+}
 
+stats spawn_rahan(){
+    stats rahan;
+    rahan.pdv = 80;
+    rahan.sante = rahan.pdv;
+    rahan.force = 10;
+    rahan.vitesse = 1;
+    return rahan;
+}
+
+coordone coord_r(){
+    coordone coord;
+    coord.x=0;
+    coord.y=0;
+    return coord;
+}
 void GRIMPER(){}    /*Affiche la carte*/    
 void RANGER(){}     /*Affiche l'inventaire*/
 

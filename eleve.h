@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "stdprof.h"
-
+/*Eleve header*/
 typedef struct carto{
     int taillex;
     int tailley;
@@ -47,11 +47,11 @@ typedef struct monstre_stat {
 } monstre;
 
 
-struct coord;
-struct rahan;
-struct map;
+extern struct coordonee_rahan coord;
+extern struct rahan_stats rahan;
+extern struct carto* map;
 
-carte nouvelle_carte(int x,int y);
+struct carto* nouvelle_carte(int x,int y);
 
 void GIGA_NIGGA_SWITCH(char arg);
 void liberer_macron();
