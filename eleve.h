@@ -1,3 +1,6 @@
+#ifndef ELEVE_H
+#define ELEVE_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "stdprof.h"
@@ -43,18 +46,22 @@ typedef struct monstre_stat {
     int  vie;
 } monstre;
 
-extern coordone coord;
-extern stats rahan;
-extern carte *map;
 
-carte *nouvelle_carte(int x,int y);
-stats spawn_rahan();
-coordone coord_r();
+struct coord;
+struct rahan;
+struct map;
+
+carte nouvelle_carte(int x,int y);
+
+void GIGA_NIGGA_SWITCH(char arg);
 void liberer_macron();
-void afficher_carte();
+void VISION();
 void INVOCATION();
 void HAUT();
 void BAS();
 void GAUCHE();
 void DROITE();
 char lire_commande();
+
+
+#endif
