@@ -93,7 +93,7 @@ void DROITE() {
             break;
         } 
         map->memoire[coord.y][coord.x] = ' ';
-        map->memoire[coord.y + 1][coord.x+1] = 'R';
+        map->memoire[coord.y][coord.x+1] = 'R';
         coord.x = coord.x + 1;
         i++;
     }
