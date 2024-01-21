@@ -1,3 +1,4 @@
+#include <stddef.h>
 /* Ne pas utiliser cette fonction directement.  Il faut l’appeler via
  * la macro stdprof_malloc qui permet de compléter automatiquement la
  * ligne et le fichier.
