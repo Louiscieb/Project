@@ -3,16 +3,11 @@
 #include "stdprof.h"
 #include "eleve.h"
 
-coordone coord;
-stats rahan;
-carte *map;
 
-void init_eleve_structures(void) {
-    coord = coord_r();
-    rahan = spawn_rahan();
-    map = nouvelle_carte(10, 10);
-}
 
+struct coordones coord={0,0};
+struct stats rahan = {80,80,10,1};
+struct carte*map= nouvelle_carte(10, 10);
 
 void liberer_macron() {
     int i;
@@ -23,25 +18,8 @@ void liberer_macron() {
     stdprof_free(map);
 }
 
-void GIGA_NIGGA_SWITCH(char  arg){
-    switch (arg)
-    {
-    case "INVOCATION":
-        INVOCATION();
-        break;
-        case "E":
-        printf("PEKS");
-        break;
-    default:
-        break;
-    }
 
-
-
-
-}
-
-void afficher_carte(){
+void VISION(){
     int i,j;
     printf("  0 1 2 3 4 5 6 7 8 9 \n");/*a remplacer après par une boucle jusqu'a taille x*/
     printf(" +-+-+-+-+-+-+-+-+-+-+\n");
@@ -58,64 +36,103 @@ void afficher_carte(){
 }
     printf(" +-+-+-+-+-+-+-+-+-+-+\n");
 }
+
 void INVOCATION(){
     printf("\n ===STATISTIQUES===\nSANTé : %d/%d\nForce : %d\nVITESSE : %d\n================== \n",
     rahan.pdv,rahan.sante,rahan.force,rahan.vitesse);
 }                   /*Affiche les statistiques du personnage*/
 
-void HAUT() {
 
-    if (map-> memoire[coord.x][coord.y-1] =='#'){
-        printf("Rahan :\" Aïe ! >:(\"\n");
-    }
-    else{
-        map-> memoire[coord.y][coord.x] = ' ';
-        map-> memoire[coord.y - 1][coord.x] = 'R';
+void HAUT() {
+    int i=0;
+    while(i<=rahan.vitesse) {
+        if (map->memoire[coord.x][coord.y - i] == '#') {
+            printf("Rahan : \" Aïe ! >:(\"\n");
+            break;
+        }
+        map->memoire[coord.y][coord.x] = ' ';
+        map->memoire[coord.y - 1][coord.x] = 'R';
         coord.y = coord.y - 1;
-    }    
+        i++;
+    }
 }
 
 void BAS() {
-
-    if (map-> memoire[coord.x][coord.y+1] =='#'){
-        printf("Rahan :\" Aïe ! >:(\"\n");
+    int i=0;
+    while(i<=rahan.vitesse){
+        if (map->memoire[coord.x][coord.y + i] == '#') {
+            printf("Rahan : \" Aïe ! >:(\"\n");
+            break;
         } 
-    else{
-        map-> memoire[coord.y][coord.x] = ' ';
-        map-> memoire[coord.y+1][coord.x] = 'R';
-        coord.y = coord.y + 1; 
-
-    }            
+        map->memoire[coord.y][coord.x] = ' ';
+        map->memoire[coord.y + 1][coord.x] = 'R';
+        coord.y = coord.y + 1;
+        i++;
+    }
 }
 
 void GAUCHE() {
-
-    if (map -> memoire[coord.x-1][coord.y] =='#'){
-    printf("Rahan :\" Aïe ! >:(\"\n");
+    int i=0;    
+    while(i<=rahan.vitesse){
+        if (map->memoire[coord.x-1][coord.y] == '#') {
+            printf("Rahan : \" Aïe ! >:(\"\n");
+            break;
+        } 
+        map->memoire[coord.y][coord.x] = ' ';
+        map->memoire[coord.y][coord.x-1] = 'R';
+        coord.x = coord.x - 1;
+        i++;
+    }
 }
-else{
-    map-> memoire[coord.y][coord.x] = ' ';
-    map-> memoire[coord.y][coord.x - 1] = 'R';
-    coord.x = coord.x - 1;
-}
-}    
 
 void DROITE() {
+    int i=0;
+    while(i<=rahan.vitesse){
+        if (map->memoire[coord.x+1][coord.y] == '#') {
+            printf("Rahan : \" Aïe ! >:(\"\n");
+            break;
+        } 
+        map->memoire[coord.y][coord.x] = ' ';
+        map->memoire[coord.y + 1][coord.x+1] = 'R';
+        coord.x = coord.x + 1;
+        i++;
+    }
+}
+void GIGA_NIGGA_SWITCH(char  arg){
+    switch (arg)
+    {
+    case 'I':
+        INVOCATION();
+        break;
+    case 'V':
+        VISION();
+        break;
+    case 'H':
+        HAUT();
+        break;
+    case 'B':
+        BAS();
+        break;
+    case 'G':
+        GAUCHE();
+        break;
+    case 'D':
+        DROITE();
+        break;
+    case 'd' :
+        DROITE();
+        break;
+    default:
+        break;
+    }
 
-    if (map-> memoire[coord.x + 1][coord.y] =='#'){
-    printf("Rahan :\" Aïe ! >:(\"\n");
-}
-else{
-    map-> memoire[coord.y][coord.x] = ' ';
-    map-> memoire[coord.y][coord.x + 1] = 'R';
-    coord.x = coord.x + 1;
-}
+
+
+
 }
 
 void GRIMPER(){}    /*Affiche la carte*/    
 void RANGER(){}     /*Affiche l'inventaire*/
-void VISION(){
 
-}
 
 
