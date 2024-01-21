@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "stdprof.h"
-#include "eleve.h"
-#include "Lecture.c"
+#include "eleve.h"  
+
 
 void print_file(FILE *fichier){
     char c;
-    while ( (c=getc(fichier)) != EOF) fputc(c,stdout);
-    GIGA_NIGGA_SWITCH(c);
+    while ( (c=getc(fichier)) != EOF){
+        GIGA_NIGGA_SWITCH(c);
+    }
 }
 
 int main(int argc, char* argv[]){
@@ -27,8 +28,6 @@ int main(int argc, char* argv[]){
         {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
         {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}
     };
-    spawn_rahan();
-    map= nouvelle_carte(10,10);
     for ( i = 0; i < map->tailley; i++) {
         for ( j = 0; j < map->taillex; j++) {
             map->memoire[i][j] = init_values[i][j];
@@ -51,37 +50,5 @@ int main(int argc, char* argv[]){
         fclose(fichiers);
     }
     }
-    /*afficher_carte();
-    BAS();
-    BAS();
-    INVOCATION();
-    afficher_carte();
-    DROITE();
-    HAUT();
-    afficher_carte(); 
-    HAUT();
-    afficher_carte();
-    liberer_macron();
-    printf("%d , %d",coord.x,coord.y);
-    stdprof_afficher();*/
-    /*printf("%d",lire_commande());*/
-    
- /*   printf("Entrez une chaîne de caractères (Ctrl+D pour terminer la saisie) :\n");
-
-
-    printf("Vous avez saisi : ");
-    
-    while ((character = getchar()) != EOF && character != '\n') {
-        printf("%c",character);
-        
-    }
-    afficher_carte();
-    test[1]=character;   
-    printf("%s",test);
-
-    printf("\n");
-    
-
-    */
    return 0;
 } 
