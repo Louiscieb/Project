@@ -7,7 +7,7 @@
 void print_file(FILE *fichier){
     char c;
     while ( (c=getc(fichier)) != EOF){
-        GIGA_NIGGA_SWITCH(c);
+        switcho(c);
     }
 }
 
