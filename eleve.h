@@ -53,7 +53,7 @@ extern struct carto* map;
 
 struct carto* nouvelle_carte(int x,int y);
 
-void GIGA_NIGGA_SWITCH(char arg);
+void switcho(char arg);
 void liberer_macron();
 void VISION();
 void INVOCATION();
