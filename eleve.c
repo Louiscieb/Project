@@ -97,7 +97,7 @@ void DROITE() {
         i++;
     }
 }
-void GIGA_NIGGA_SWITCH(char  arg){
+void switcho (char  arg){
     switch (arg)
     {
     case 'I':
